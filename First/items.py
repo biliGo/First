@@ -23,3 +23,11 @@ class GetDoubanItem(scrapy.Item):
     num = scrapy.Field()
     title = scrapy.Field()
     score = scrapy.Field()
+
+class PubItem(scrapy.Item):
+    title = scrapy.Field()
+    content = scrapy.Field()
+    img = scrapy.Field()
+
+class QhqItem(scrapy.Item):
+    body = scrapy.Field()

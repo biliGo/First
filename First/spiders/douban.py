@@ -48,10 +48,3 @@ class DouBan(scrapy.Spider):
                 pass
 
 
-
-
-
-    def parse_p(self, response):
-
-        pass
-

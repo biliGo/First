@@ -8,6 +8,40 @@
 import pymysql
 import json
 import sys
+from flask import jsonify
+
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    db_user = 'root'
+    db_host = '127.0.0.1'
+    db_pwd = 'guo'
+    db_base = 'test'
+    db = pymysql.connect(db_host, db_user, db_pwd, db_base, charset='utf8')
+    cursor = db.cursor()
+    cursor.execute('select * from test')
+    list = cursor.fetchall()
+    print(type(list))
+
+    data = []
+    for i in list:
+        dict = {}
+        dict['id'] = i[0]
+        dict['title'] = i[1]
+        dict['score'] = i[2]
+        dict['num'] = i[3]
+        # print(dict)
+        data.append(dict)
+
+    # print(dict)
+    dc = json.dumps(data, ensure_ascii=False)
+    # print(dc)
+    return dc
+
+
 
 class ToMysql():
 
@@ -20,14 +54,16 @@ class ToMysql():
         db = pymysql.connect(db_host, db_user, db_pwd, db_base, charset='utf8')
         cursor = db.cursor()
         data = []
-        with open('/Users/guo/PycharmProjects/First/douban.json','r', encoding='utf-8') as f:
+        with open('/Users/guo/PycharmProjects/First/pub.json','r', encoding='utf-8') as f:
             for line in f:
                 data.append(json.loads(line))
 
         for item in data:
-            sql = 'insert into test(title,score,num) values(%s,%s,%s)'
-            cursor.execute(sql,(item['title'],item['score'],item['num']))
+            sql = 'insert into pua(title,content) values(%s,%s)'
+            content = ''.join(item['content'])
+            cursor.execute(sql,(item['title'],content))
             db.commit()
+        print('done')
 
 
 
@@ -36,7 +72,7 @@ class ToMysql():
 
 
 if __name__ == '__main__':
-    ToMysql().databa()
+    app.run()
 
 
 
