@@ -31,3 +31,13 @@ class PubItem(scrapy.Item):
 
 class QhqItem(scrapy.Item):
     body = scrapy.Field()
+
+class TianyanItem(scrapy.Item):
+    title = scrapy.Field()
+    phone = scrapy.Field()
+    email = scrapy.Field()
+    address = scrapy.Field()
+    url = scrapy.Field()
+    sobus = scrapy.Field()
+
+
