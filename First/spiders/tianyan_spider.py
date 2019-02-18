@@ -18,6 +18,8 @@ class TianyanSpider(scrapy.Spider):
     # ]
 
 
+
+
     urls = 'https://www.tianyancha.com/search/p'
 
     search = '%E8%8B%97%E6%9C%A8'
@@ -38,15 +40,16 @@ class TianyanSpider(scrapy.Spider):
                "Hm_lpvt_e92c8d65d92d534b0fc290df538b4758": "1523175263"}
 
     def start_requests(self):
-        for num in range(10, 20):
+        for num in range(10):
             ul = self.urls + str(num + 1) + '?key=' + self.search
             yield scrapy.Request(url=ul, cookies=self.cookies, callback=self.parse)
 
     def parse(self, response):
-        if response.status != 200:
-            time.sleep(15)
 
         for item in response.xpath('//*[@id="web-content"]/div/div/div/div[1]/div[4]/div/div[2]/div[1]/a'):
+            '//*[@id="web-content"]/div/div/div/div[1]/div[4]/div/div[2]/div[1]/a'
+            '//*[@id="web-content"]/div/div[1]/div[2]/div[3]/div[1]/div[2]/div[1]/a' \
+            '//*[@id="web-content"]/div/div[1]/div[2]/div[3]/div[2]/div[2]/div[1]/a'
             url = item.xpath('@href').extract_first()
             yield scrapy.Request(url=url, cookies=self.cookies, callback=self.parse_item)
 

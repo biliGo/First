@@ -66,13 +66,34 @@ class ToMysql():
         print('done')
 
 
+def GetLagou():
+    ll = []
+    with open('/Users/guo/PycharmProjects/First/lagou.json', 'r', encoding='utf-8') as f:
+        for item in f:
+            ll.append(json.loads(item))
 
+    print(ll)
+
+def books():
+    with open('/Users/guo/PycharmProjects/First/books.json', 'r', encoding='utf-8') as f:
+        dict = json.load(f)
+
+    ll = dict['books']
+    lis = []
+    for item in ll:
+        dic = item['contents']
+        for it in dic:
+            if it['type'] == 3:
+                lis.append(it['fragmentId'])
+
+    print(lis)
 
 
 
 
 if __name__ == '__main__':
-    app.run()
+    # app.run()
+    books()
 
 
 

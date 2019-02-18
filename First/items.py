@@ -40,4 +40,15 @@ class TianyanItem(scrapy.Item):
     url = scrapy.Field()
     sobus = scrapy.Field()
 
+class QichachaItem(scrapy.Item):
+    title = scrapy.Field()
+    phone = scrapy.Field()
+    email = scrapy.Field()
+    address = scrapy.Field()
+    url = scrapy.Field()
+    sobus = scrapy.Field()
+
+class PandengItem(scrapy.Item):
+    body = scrapy.Field()
+
 

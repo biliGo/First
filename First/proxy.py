@@ -38,23 +38,23 @@ def get_random_ip(ip_list):
 
 
 if __name__ == '__main__':
-    # url = 'http://www.xicidaili.com/nn/'
-    # headers = {
-    #     'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36'
-    # }
-    # proxies=get_random_ip(get_ip_list(url, headers))
+    url = 'http://www.xicidaili.com/nn/'
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36'
+    }
+    proxies=get_random_ip(get_ip_list(url, headers))
+
+    urls = 'http://fanyi.baidu.com/'
+    #使用proxy
+    web_data = requests.get(url=urls,headers=headers,proxies=proxies)
+    print(web_data.text.encode('utf-8'))
+
+    # from scrapy.commands import list
+    # from First.spiders.douban import DouBan
     #
-    # urls = 'http://fanyi.baidu.com//'
-    # #使用proxy
-    # web_data = requests.get(url=urls,headers=headers,proxies=proxies)
-    # print(web_data.text.encode('utf-8'))
-
-    from scrapy.commands import list
-    from First.spiders.douban import DouBan
-
-    db = DouBan()
-
-    print(db.name=='douban')
+    # db = DouBan()
+    #
+    # print(db.name=='douban')
 
     # for item in list:
     #     print(item)

@@ -101,6 +101,6 @@ MY_USER_AGENT = [
 DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddleware.useragent.UserAgentMiddleware': None,
     'First.middlewares.MyUserAgentMiddleware': 400,
-    'First.middlewares.ProxyMiddleWare':125,
+    # 'First.middlewares.ProxyMiddleWare':125,
 }
 
