@@ -64,7 +64,9 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'First.pipelines.FirstPipeline': 300,
+   'First.pipelines.ShukePipeline': 300,
+   # 'First.pipelines.Fandeng': 200,
+
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

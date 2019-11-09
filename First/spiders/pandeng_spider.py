@@ -38,6 +38,7 @@ class PandengSpider(scrapy.Spider):
 
 
 
+
     def parse(self, response):
 
         jsobj = json.loads(response.body)

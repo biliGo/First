@@ -52,3 +52,14 @@ class PandengItem(scrapy.Item):
     body = scrapy.Field()
 
 
+class FandengItem(scrapy.Item):
+    title = scrapy.Field()
+    summary = scrapy.Field()
+    mediaUrls = scrapy.Field()
+
+class ShukeItem(scrapy.Item):
+    title = scrapy.Field()
+    summary = scrapy.Field()
+    mediaUrl = scrapy.Field()
+
+

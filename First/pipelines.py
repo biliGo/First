@@ -7,6 +7,7 @@
 
 import pymysql
 import json
+import codecs
 
 
 class FirstPipeline(object):
@@ -25,3 +26,29 @@ class FirstPipeline(object):
     def process_item(self, item, spider):
 
         return item
+
+class Fandeng(object):
+    """docstring for Fandeng"""
+    def __init__(self):
+        self.file = codecs.open('fandeng_video.json','w', encoding='utf-8')
+
+    def process_item(self, item, spider):
+        lines = json.dumps(dict(item), ensure_ascii= False) + ',\n'
+        self.file.write(lines)
+        return item
+
+    def close_spider(self, spider):
+        self.file.close()
+
+class ShukePipeline(object):
+    def __init__(self):
+        self.file = codecs.open('shuke_ldl.json', 'w', encoding='utf-8')
+
+    def process_item(self, item, spider):
+        line = json.dumps(dict(item), ensure_ascii=False) + ',\n'
+        self.file.write(line)
+
+        return item
+
+    def spider_closed(self, spider):
+        self.file.close()
